@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JL Puente 😉</title>
+  <link rel="icon" href="img/icon.png" sizes="32x32" />
+  <link rel="stylesheet" href="assets/prism.css" media="screen" title="no title">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cabecera">
+      <h1>Primeros pasos en JavaScript</h1>
+      <h4>JLPuente · puenteformacio@gmail.com</h4>
+      <img src="img/logo.png">
+    </div>
+
+
+    <h2>1. JAVASCRIPT EN LA CONSOLA</h2>
+    <h3>1.1. LÍNEA DE COMANDO DEL NAVEGADOR</h3>
+
+    <p>Escribiendo mensajes en la consola del navegador</p>
+    <pre class="language-JavaScript">
+              <code>
+                //-- Escribiendo en la consola
+                > console.log("Aprendiendo JavaScript Moderno");
+                > console.error("Este es un error");
+                > console.warn("Esta es una alerta");
+                > console.info("Este es un mensaje");
+                //-- Limpiar la consola
+                > console.clear();
+              </code>
+            </pre>
+
+    <p>Realizando operaciones matemáticas básicas en la consola del navegador</p>
+    <pre class="language-JavaScript">
+              <code>
+                > 10 + 50 + 25
+                > 60 - 20.5
+                > 75 * 2.3
+                > -2.5 * 158.26
+                > 48 / 6
+                > 48 / 25
+                > 24 % 5
+                > (25+18)/4
+              </code>
+            </pre>
+
+    <p>Funciones para interactuar con el usuario: </p>
+    <pre class="language-JavaScript">
+              <code>
+                > alert("Empezando a programar en JavaScript");
+                > prompt("Ingrese su nombre: ");
+              </code>
+            </pre>
+
+    <p>Realizando operaciones lógicas básicas en la consola del navegador</p>
+    <pre class="language-JavaScript">
+              <code>
+                > 20 > 10
+                > 20 >= 10
+                > 30 != 20
+                > 2 == '2'
+                > 2 === '2'
+              </code>
+            </pre>
+
+    <h2>2. INCLUSIÓN DE JAVASCRIPT</h2>
+    <p>2.1. Etiqueta para incluir archivo JavaScript</p>
+    <pre class="language-JavaScript">
+              <code>
+                &#60;script src="app.js" type="text/javascript"&#62;&#60;/script&#62;
+              </code>
+            </pre>
+
+    <p>2.2. Comentarios en JavaScript</p>
+    <pre class="language-JavaScript">
+              <code>
+                // comentario lineal o en una línea
+                /* Los comentarios de varias líneas -> son muy útiles
+                   cuando se necesita incluir bastante información
+                   en los comentarios */
+              </code>
+            </pre>
+
+    <p>2.3. Trabajando en el Script</p>
+    <pre class="language-JavaScript">
+              <code>
+                /*
+                    Primeros pasos en
+                    JavaScript
+                */
+
+                //-- Mensaje en la consola
+                console.log("Aprendiendo JavaScript :)");
+                console.log("JavaScript");
+                console.log("Front-End");
+
+                //-- Función: alert()
+                alert('Hola Mundo =)');
+
+                //-- Función prompt() y mi primera variable
+                var nombre = prompt('Ingrese su nombre: ');
+
+                alert("Nombre: " + nombre);
+                console.log(`Nombre: ${nombre}`);
+              </code>
+            </pre>
+
+    <h2>3. FUNDAMENTOS DE JAVASCRIPT</h2>
+    <p>3.1. VARIABLES</p>
+    <pre class="language-JavaScript">
+              <code>
+                /*
+                 *  Tema : Variables
+                 *  Autor    : JL Puente
+                 *  Version  : EcmaScript ES11
+                 */
+
+                 //-- Cadenas o Strings
+                 
+                 var nombre = 'Jaime Torres';
+                 let ocupacion = "Desarrollador Web";
+
+                console.log(`Nombre: ${nombre} - Ocupación: ${ocupacion}`);
+
+                //-- Números
+                var numero1 = 12; //entero
+                var numero2 = 33.258; //flotante (decimal)
+                var numero3 = -58; //negativo
+                const PI = 3.1416; //constante
+
+                console.log('Número 1 = ' + numero1);
+                console.log('Número 2 = ' + numero2);
+                console.log('Número 3 = ' + numero3);
+                console.log('Constante PI = ' + PI);
+
+                //-- Booleanos
+                var encendido = true;//false
+                console.log(`¿El auto esta encendido?: ${encendido}`);
+
+                //-- Tipo de Dato
+                console.log(typeof nombre);
+                console.log(typeof numero2);
+                console.log(typeof encendido);
+              </code>
+            </pre>
+
+    <p>3.3. EXPRESIONES</p>
+    <pre class="language-JavaScript">
+              <code>
+                /*
+                 *  Tema: Expresiones
+                 *  Autor   : JL Puente
+                 *  Versión : EcmaScript ES11
+                 */
+
+                // -------------------------
+                // Operadores de Asignación
+                // -------------------------
+
+                console.warn('--- Operadores de Asignación ---');
+
+                var numero = 10;
+                console.log(`Numero = ${numero}`);
+
+                numero = 25; // Reasignar
+                console.log(`Numero = ${numero}`);
+
+                numero = numero + 15; // Reasignar con un incremento aditivo
+                console.log(`Numero = ${numero}`);
+
+                numero += 5; // Reasignar con un incremento aditivo (otra sintaxis)
+                console.log(`Numero = ${numero}`);
+
+                numero -= 20; // Reasignar con un decremento
+                console.log(`Numero = ${numero}`);
+
+                numero *= 4; // Reasignar con un incremento multiplicativo
+                console.log(`Numero = ${numero}`);
+
+                numero /= 2; // Reasignar con una partición
+                console.log(`Numero = ${numero}`);
+
+                numero %= 6; // Reasignar con un módulo
+                console.log(`Numero = ${numero}`);
+
+                // ---------------------
+                // Pre y Post Incremento
+                // ---------------------
+
+                console.warn('--- Operadores de Pre y Post Incremento ---');
+
+                var i = 10;
+
+                console.log(`Pre Incremento: i = ${++i}`); // Pre Incremento: Se incrementa en la misma instrucción
+
+                i = 10;
+                console.log(`Post Incremento: i = ${i++}`); // Post Incremento: se incrementa en la siguiente instrucción
+                console.log(`Post Incremento: i = ${i}`);
+
+                // ----------------------
+                // Operadores Aritméticos
+                // ----------------------
+
+                console.warn('--- Operaciones Aritméticas ---');
+
+                var numero1 = 20, numero2 = 8;
+
+                var suma = numero1 + numero2; // Sumar
+                console.log(`suma = ${suma}`);
+
+                var resta = numero1 - numero2; // Restar
+                console.log(`resta = ${resta}`);
+
+                var producto = numero1 * numero2; // Multiplicar
+                console.log(`producto = ${producto}`);
+
+                var cociente = numero1 / numero2; // Dividir
+                console.log(`cociente = ${cociente}`);
+
+                var cocienteEntero = numero1 / numero2 >> 0; // Dividir con resultado entero
+                console.log(`cocienteEntero = ${cocienteEntero}`);
+
+                var modulo = numero1 % numero2; // Modulo de la división entera
+                console.log(`modulo = ${modulo}`);
+
+                // -----------------------
+                // Operadores Relacionales
+                // -----------------------
+
+                console.warn('--- Operadores Relacionales ---');
+
+                var numero3 = 30;
+                var cadena = "20";
+
+                console.log(`${numero1} > ${numero2} : ${numero1 > numero2}`);
+                console.log(`${numero1} >= ${numero2} : ${numero1 >= numero2}`);
+                console.log(`${numero1} < ${numero2} : ${numero1 < numero2}`);
+                console.log(`${numero1} == ${cadena} : ${numero1 == cadena}`);
+                console.log(`${numero1} === ${numero2} : ${numero1 == numero2}`);
+
+                // ------------------
+                // Operadores Lógicos
+                // ------------------
+
+                console.warn('--- Operadores Lógicos ---');
+
+                console.log(`(${numero1} > ${numero2}) && (${numero1} < ${numero3}) : ${(numero1 > numero2) && (numero1 < numero3)}`);
+                console.log(`(${numero1} < ${numero2}) || (${numero1} != ${cadena}) : ${(numero1 < numero2) || (numero1 != cadena)}`);
+                console.log(`![(${numero1} < ${numero2}) || (${numero1} == ${numero3})] : ${!(numero1 < numero2) || (numero1 == numero3)}`);
+
+                // ------------------------
+                // Operadores Condicionales
+                // ------------------------
+
+                console.warn('--- Operadores Condicionales ---');
+
+                console.log(`${numero1} >= ${numero2} : ${numero1 >= numero2 ? "OK":"MAL"}`);
+              </code>
+            </pre>
+
+    <p>3.4. LIBRERÍAS</p>
+    <pre class="language-JavaScript">
+              <code>
+                /*
+                 *  Tema: Librerías
+                 *  Autor   : JL Puente
+                 *  Versión : EcmaScript ES11
+                 */
+
+                //-- Math
+                var numero1 = 2.58965;
+                var numero2 = 3;
+
+                console.log(`round(PI) = ${Math.PI}`);
+                console.log(`sqrt(${numero2}) = ${Math.sqrt(numero2)}`);
+                console.log(`2^9 = ${Math.pow(2,9)}`);
+
+                //-- Date
+                var fecha = new Date();
+
+                console.log(`Hoy es: ${fecha}`);
+                console.log(`Hoy es: ${fecha.getMonth()}`);
+                console.log(`Hoy es: ${fecha.getDay()}`);
+              </code>
+            </pre>
+
+    <p>3.5. CONVERSIÓN DE TIPOS</p>
+    <pre class="language-JavaScript">
+              <code>
+                /*
+                 *  Tema: Conversión de Tipos
+                 *  Autor   : JL Puente
+                 *  Version : EcmaScript ES11
+                 */
+
+                //-- Casting o Conversión de Tipos en la entrada
+
+                var cadena = prompt('Ingrese una cadena: ');
+                var numero1 = parseInt(prompt('Ingrese un número entero: '));
+                var numero2 = parseFloat(prompt('Ingrese un número decimal: '));
+
+                console.log(`Cadena : ${cadena}`);
+                console.log(`Numero1 = ${numero1}`);
+                console.log(`Numero2 : ${numero2}`);
+
+                var numero3 = parseInt(prompt("Ingrese un número entero por segunda vez: "));
+                var numero4 = parseInt(prompt("Ingrese un número entero por tercera vez: "));
+
+                console.log(`Numero3 = ${numero3}`);
+                console.log(`Numero4 : ${numero4}`);
+
+                //-- Casting o Conversión de Tipos en la salida 
+
+                console.warn('--- Casting ---');
+
+                numero3 = numero3 + ""; // convertir número a cadena forma 1
+                numero3 = String(numero3); // convertir número a cadena forma 2
+                numero4 = parseFloat(numero4); // convertir número entero a punto flotante
+
+                console.log(`Número => Cadena : ${numero3}`);
+                console.log(`Número => Número : ${numero4.toFixed(3)}`);
+            </pre>
+  </div>
+
+  <style>
+    .contenedor {
+      margin: 0 auto;
+      width: 800px;
+    }
+  </style>
+
+  <script src="assets/prism.js"></script>
+</body>
+
+</html>

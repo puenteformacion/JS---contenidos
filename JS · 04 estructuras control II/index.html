@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JL Puente 😉</title>
+  <link rel="icon" href="img/icon.png" sizes="32x32" />
+  <link rel="stylesheet" href="assets/prism.css" media="screen" title="no title">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cabecera">
+      <h1>Estructuras de Control II</h1>
+      <h4>JLPuente · puenteformacio@gmail.com</h4>
+      <img src="img/logo.png">
+    </div>
+
+
+    <h2>5. ESTRUCTURA MODULAR</h2>
+    <h3>📌 MÓDULO TABLAS ARITMÉTICAS</h3>
+
+    <p>▪️ Módulo Menú</p>
+    <pre class="language-JavaScript">
+              <code>
+                function menu() {
+                  return opcion = parseInt(prompt("Ingrese una opción:\n <1> Tabla de Sumar \n <2> Tabla de Multiplicar \n <3> Salir"));
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Tabla de Sumar</p>
+    <pre class="language-JavaScript">
+              <code>
+                function tablaSumar() {
+                  let numero, suma;
+                  
+                  do {
+                    numero = parseInt(prompt("TABLA DE SUMAR \n Ingrese un número entre 1-12: "));
+                  } while((numero<1) || (numero>12));
+                  
+                  
+                  document.write(`< div class="tabla">TABLA DE SUMAR</ div> < br>`)
+
+                  for (let i = 0; i <= 12; i++) {
+                    suma = numero + i;
+                    document.write("< hr>");
+                    document.write(`${numero} + ${i} = ${suma} < br>`);    
+                  }
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Tabla de Multiplicar</p>
+    <pre class="language-JavaScript">
+              <code>
+                function tablaMultiplicar() {
+                  let numero, producto;
+                  
+                  do {
+                    numero = parseInt(prompt("TABLA DE MULTIPLICAR \n Ingrese un número entre 1-12: "));
+                  } while((numero<1) || (numero>12));
+                  
+                  
+                  document.write(`< div class="tabla">TABLA DE MULTIPLICAR</ div> < br>`)
+
+                  for (let i = 0; i <= 12; i++) {
+                    producto = numero * i;
+                    document.write("< hr>");
+                    document.write(`${numero} x ${i} = ${producto} < br>`);    
+                  }
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo Principal</p>
+    <pre class="language-JavaScript">
+              <code>
+                function tablasAritmeticas() {
+                  do {
+                    //--Ejecutar módulo Menú y leer opción del usuario
+                    let opcion;
+                    opcion = menu();    
+
+                    //-- Mostrar tablas según opción
+                    switch (opcion) {
+                      case 1:
+                        tablaSumar();
+                        break;
+                      
+                      case 2:
+                        tablaMultiplicar();
+                        break;
+
+                      default:
+                        break;
+                    }
+                    
+                  } while (opcion > 3);
+                }
+
+                tablasAritmeticas();
+              </code>
+            </pre>
+
+    <h3>📌 MÓDULO PROMEDIO FINAL</h3>
+    <p>▪️ Variables Globales</p>
+    <pre class="language-JavaScript">
+              <code>
+                let nota1, nota2, nota3, nota4;
+                const minimo=0, maximo=100;
+                let mayor, menor, promedio;
+              </code>
+            </pre>
+
+    <p>▪️ Módulo Leer Nota</p>
+    <pre class="language-JavaScript">
+              <code>
+                function leerNota(minimo,maximo) {
+                  do {
+                    nota = parseFloat(prompt("Ingrese una nota entre 0 y 100: "));
+                    if ((nota < minimo) || (nota > maximo)){
+                      alert("❌ ¡¡ERROR!! 🤓 Recuerda un nota entre 0 y 100 ");
+                    }
+                  } while ((minimo<=nota) && (nota>=maximo));
+                  
+                  return nota;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo Determinar Menor</p>
+    <pre class="language-JavaScript">
+              <code>
+                function determinarMenor(numero1, numero2, numero3, numero4, menor){
+                  menor = numero1;
+
+                  if (menor > numero2) {
+                    menor = numero2;
+                  }
+
+                  if (menor > numero3) {
+                    menor = numero3;
+                  }
+
+                  if (menor > numero4) {
+                    menor = numero4;
+                  }
+
+                  return menor;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo Determinar Mayor</p>
+    <pre class="language-JavaScript">
+              <code>
+                function determinarMayor(numero1, numero2, numero3, numero4, mayor){
+                  mayor = numero1;
+
+                  if (mayor < numero2) {
+                    mayor = numero2;
+                  }
+
+                  if (mayor < numero3) {
+                    mayor = numero3;
+                  }
+
+                  if (mayor < numero4) {
+                    mayor = numero4;
+                  }
+
+                  return mayor;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo Principal</p>
+    <pre class="language-JavaScript">
+              <code>
+                function promedioFinal() {
+                  //--Leer notas
+                  nota1 = leerNota(minimo,maximo);
+                  nota2 = leerNota(minimo,maximo);
+                  nota3 = leerNota(minimo,maximo);
+                  nota4 = leerNota(minimo,maximo);
+
+                  //--Calcular promedio
+                  menor = determinarMenor(nota1,nota2,nota3,nota4,menor);
+                  mayor = determinarMayor(nota1,nota2,nota3,nota4,mayor);
+                  promedio = (nota1 + nota2 + nota3 + nota4 - mayor - menor)/2;
+
+                  //--Escribir Promedio
+                  document.write(`&#60;div class="tabla"&#62;Promedio: ${promedio}&#60;/div&#62;`)
+                }
+
+                promedioFinal();
+              </code>
+            </pre>
+
+    <h2>6. APLICACIONES EN ARREGLOS</h2>
+    <h3>📌 PROMEDIO DE N NOTAS DE UN ARREGLO</h3>
+    <p>▪️ Variables Globales</p>
+    <pre class="language-JavaScript">
+              <code>
+                let n; //-- número de notas
+                let promedio, notasMayores;
+                let aNotas = new Array();
+              </code>
+            </pre>
+
+
+    <p>▪️ Módulo Leer Número Entero</p>
+    <pre class="language-JavaScript">
+              <code>
+                function leerNumeroEntero(minimo,maximo,n) {
+                  do {
+                    n = parseInt(prompt("Ingrese una número entero entre 1 y 100: "));
+                    if ((n < minimo)||(n > maximo)){
+                      alert("❌ ¡¡ERROR!! 🤓 Recuerda un número entero entre 1 y 100 ");
+                    }
+                  } while ((minimo > n) || (n > maximo));
+
+                  return n;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo: leer arreglo de notas y acumularlas</p>
+    <pre class="language-JavaScript">
+              <code>
+                function leerArreglo(n, aNotas) {
+                  for (let i = 0; i < n; i++) {
+                    aNotas[i] = parseFloat(prompt(`Ingrese Nota ${i+1}: `));
+                  }
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo: calcular promedio</p>
+    <pre class="language-JavaScript">
+              <code>
+                function calcularPromedio(n,aNotas,promedio) {
+                  let suma=0;
+                  
+                  for (let i = 0; i < n; i++) {
+                    suma = suma + aNotas[i];
+                  }
+
+                  return promedio = suma/n;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo determinar notas mayores</p>
+    <pre class="language-JavaScript">
+              <code>
+                function determinarMayores(n,aNotas,promedio,notasMayores) {
+                  notasMayores=0;
+
+                  for (let i = 0; i < n; i++) {
+                    if (aNotas[i] > promedio){
+                      notasMayores = notasMayores + 1;
+                    }    
+                  }
+
+                  return notasMayores;
+                }
+              </code>
+            </pre>
+
+
+    <p>▪️ Módulo principal</p>
+    <pre class="language-JavaScript">
+              <code>
+                function principal(){
+                  //--Módulo: leer número de notas
+                  n = leerNumeroEntero(1,100,n);
+
+                  //--Módulo: leer notas y acumularlas
+                  leerArreglo(n, aNotas);
+                  console.table(aNotas);
+                  //--Módulo: calcular promedio
+                  promedio = calcularPromedio(n,ANotas,promedio);
+
+                  //--Módulo: Determinar número de notas mayores al promedio
+                  notasMayores = determinarMayores(n,ANotas,promedio,notasMayores);
+                  //--Escribir promedio y número de notas mayores al promedio
+                  document.write(`Promedio ${promedio} &#60;br&#62; 
+                                  Notas mayores al promedio: ${notasMayores}
+                                   
+                                `);
+
+                }
+
+                principal();
+              </code>
+            </pre>
+
+    <h3>📌 ELEMENTO EXISTE EN EL ARREGLO</h3>
+    <p>▪️ Variables globales</p>
+    <pre class="language-JavaScript">
+              <code>
+                let arreglo = new Array();
+                let n;
+                let clave;
+                let indicador;
+              </code>
+            </pre>
+
+    <p>▪️ Módulo: Leer Número Entero</p>
+    <pre class="language-JavaScript">
+              <code>
+                function leerNumeroEntero(minimo,maximo,n) {
+                  do {
+                    n = parseInt(prompt(`Ingrese una número entero entre ${minimo} y ${maximo}: `));
+                    if ((n< minimo)||(n>maximo)){
+                      alert(`❌ ¡¡ERROR!! 🤓 Recuerda un número entero entre ${minimo} y ${maximo}`);
+                    }
+                  } while ((minimo > n) || (n > maximo));
+
+                  return n;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo: leer arreglo y acumular elementos</p>
+    <pre class="language-JavaScript">
+              <code>
+                function leerArreglo(n, arreglo) {
+                  for (let i = 0; i < n; i++) {
+                    arreglo[i] = parseFloat(prompt(`Ingrese Elemento ${i+1}: `));
+                  }
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo: existe clave</p>
+    <pre class="language-JavaScript">
+              <code>
+                function existeClave(n,arreglo,clave,indicador) {
+                  indicador = false;
+                  let i = 1;
+                  
+                  while (i<=n && indicador==false) {
+                    indicador = (clave==arreglo[i]);
+                    i++
+                  }
+
+                  return indicador;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Módulo Principal</p>
+    <pre class="language-JavaScript">
+              <code>
+                function principal(){
+                  //--Módulo: leer número de elementos del arreglo
+                  n = leerNumeroEntero(1,20,n);
+
+                  //--Módulo: leer arreglo y acumular los elementos
+                  leerArreglo(n, arreglo);
+                  console.table(arreglo);
+
+                  //--Módulo: leer clave a comparar
+                  clave = parseInt(prompt("Ingrese un número: "));
+
+                  //--Módulo: existe elemento
+                  indicador = existeClave(n,arreglo,clave,indicador);
+
+                  //--Escribir resultados
+                  if (indicador==true) {
+                    document.write(`El elemento existe en el arreglo 😉`);
+                  } else {
+                    document.write(`El elemento no existe en el arreglo 😞`);
+                  }
+                }
+
+                principal();
+              </code>
+            </pre>
+
+    <h2>7. RECURSIVIDAD</h2>
+    <h3>📌 FACTORIAL DE UN NÚMERO</h3>
+    <p>▪️ Variables Globales</p>
+    <pre class="language-JavaScript">
+              <code>
+                let n;
+                let resultado;
+              </code> 
+            </pre>
+
+    <p>▪️ Función recursiva</p>
+    <pre class="language-JavaScript">
+              <code>
+                function factorial(n){
+                  if(n==0) {
+                    return 1;
+                  } else { //n>0
+                    return n*factorial(n-1);
+                  }
+                }
+              </code> 
+            </pre>
+
+    <p>▪️ Módulo Leer Número Entero</p>
+    <pre class="language-JavaScript">
+              <code>
+                function leerNumeroEntero(minimo,maximo,n) {
+                  do {
+                    n = parseInt(prompt("Ingrese una número entero entre 1 y 100: "));
+                    if ((n< minimo)||(n>maximo)){
+                      alert("❌ ¡¡ERROR!! 🤓 Recuerda un número entero entre 1 y 100 ");
+                    }
+                  } while ((minimo > n) || (n > maximo));
+
+                  return n;
+                }
+              </code> 
+            </pre>
+
+    <p>▪️ Función Principal</p>
+    <pre class="language-JavaScript">
+              <code>
+                function principal(){
+                  //--Módulo: leer número entero
+                  n = leerNumeroEntero(1,100,n);
+
+                  //--Ejecutar factorial
+                  resultado = factorial(n);
+
+                  //--Escribir resultado
+                  document.write(`${resultado}`);
+
+                }
+
+                principal();
+              </code> 
+            </pre>
+
+
+    <h3>📌 SUMA DE LOS PRIMEROS N NÚMEROS NATURALRES</h3>
+    <p>▪️ Variables Globales</p>
+    <pre class="language-JavaScript">
+              <code>
+                let n;
+                let suma;
+              </code> 
+            </pre>
+
+    <p>▪️ Variables Globales</p>
+    <pre class="language-JavaScript">
+              <code>
+                let n;
+                let suma;
+              </code> 
+            </pre>
+
+    <p>▪️ Función Recursiva</p>
+    <pre class="language-JavaScript">
+              <code>
+                function sumaN(n){
+                  if(n==0) {
+                    return 0;
+                  } else { //n>0
+                    return n + sumaN(n-1);
+                  }
+                }
+              </code> 
+            </pre>
+
+    <p>▪️ Módulo Principal</p>
+    <pre class="language-JavaScript">
+              <code>
+                function principal(){
+                  //--Módulo: leer número entero
+                  n = leerNumeroEntero(1,100,n);
+
+                  //--Ejecutar Sumatoria
+                  suma = sumaN(n);
+
+                  //--Escribir resultado
+                  document.write(`${suma}`);
+
+                }
+
+                principal();
+              </code> 
+            </pre>
+  </div>
+
+  <style>
+    .contenedor {
+      margin: 0 auto;
+      width: 800px;
+    }
+  </style>
+
+  <script src="assets/prism.js"></script>
+</body>
+
+</html>

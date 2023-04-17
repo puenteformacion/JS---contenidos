@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>JL Puente 😉</title>
+  <link rel="icon" href="img/icon.png" sizes="32x32" />
+  <link rel="stylesheet" href="assets/prism.css" media="screen" title="no title" />
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cabecera">
+      <h1>DOM, Eventos y Listeners</h1>
+      <h4>JLPuente · puenteformacio@gmail.com</h4>
+      <img src="img/logo.png" />
+    </div>
+
+    <h2>1. DOM SCRIPTING</h2>
+    <h3>📌 SELECCIONAR ELEMENTOS DEL DOCUMENTO</h3>
+
+    <p>▪️ Seleccionar elementos CSS</p>
+    <pre class="language-JavaScript">
+              <code>
+                // Seleccionar el nodo header
+                document.querySelector("header");
+                document.querySelector("header.site-header");
+                document.querySelector(".site-header");
+
+                // Seleccionar el nodo h1
+                document.querySelector("h1");
+                document.querySelector("#titulo-principal");
+
+                // Seleccionar el nodo li
+                document.querySelector(".lista li");
+                document.querySelectorAll(".lista li");
+
+                // Seleccionar atributo
+                document.querySelector("[href='https://www.facebook.com/']");
+              </code>
+            </pre>
+
+    <h3>📌 ESTRUCTURA DEL DOCUMENTO Y TRAVERSING</h3>
+    <p>▪️ DOM como árboles de nodos</p>
+    <pre class="language-JavaScript">
+              <code>
+                const item = document.querySelector(".lista");
+
+                item.parentNode;
+                item.childElementCount;
+                item.childNodes;
+                item.children;
+                item.firstElementChild;
+                item.lastElementChild;
+
+                const encabezado = document.querySelector("h2");
+                encabezado.nextElementSibling;
+                encabezado.previousElementSibling;
+                encabezado.nodeType; 
+                encabezado.nodeValue;
+                encabezado.nodeName;
+                encabezado.textContent;
+                encabezado.innerHTML = "Nueva Noticia";
+
+                const blog = document.querySelector(".blog");
+                blog.className;
+                blog.classList;
+                blog.cloneNode();
+
+                const lista = document.querySelector(".lista li a");
+                lista.hasAttribute("href");
+
+                const tituloPrincipal = document.querySelector("#titulo-principal");
+                tituloPrincipal.classList.add("mas");
+                tituloPrincipal.classList.remove("mas");
+
+              </code>
+            </pre>
+
+    <h3>📌 CREAR, INSERTAR Y BORRAR ELEMENTOS</h3>
+    <pre class="language-JavaScript">
+              <code>
+                let seccion = document.querySelector("main.seccion");
+                let parrafoDestacado = document.createElement("blockquote");
+                let enfasis = document.createElement("em")
+
+                enfasis.append("JL Puente");
+                parrafoDestacado.append("Programando con JavaScript", enfasis);
+                parrafoDestacado.prepend("Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat ratione qui minima modi sint facilis quasi et quia ut. Temporibus consectetur deserunt unde! Eius cum sapiente fuga quae modi?");
+                parrafoDestacado.innerHTML;
+
+
+                seccion.appendChild(parrafoDestacado);
+              </code>
+            </pre>
+
+    <h3>📌 CSS CLASES</h3>
+    <pre class="language-JavaScript">
+              <code>
+                let titulo = document.querySelector("h3");
+                titulo.style.color = "RED";
+
+                let imagen = document.querySelector(".imagen img");
+                imagen.style.width = "100px";
+
+              </code>
+            </pre>
+
+    <h2>2. EVENTOS Y LISTENERS</h2>
+    <h3>📌 BOMBILLA</h3>
+    <pre class="language-JavaScript">
+              <code>
+                let bombilla = document.querySelector(".bombilla i");
+                let botonON = document.querySelector(".boton--primario");
+                let botonOFF = document.querySelector(".boton--secundario");
+
+                //--- Módulo encender
+
+                function encender(){
+
+                    bombilla.classList.add("encender");
+                }
+
+                botonON.addEventListener("click",encender);
+
+                //--- Módulo apagar
+
+                function apagar(){
+
+                    bombilla.classList.remove("encender");
+                }
+
+                botonOFF.addEventListener("click",apagar);
+              </code>
+            </pre>
+
+    <h3>📌 RELOJ DIGITAL</h3>
+    <pre class="language-JavaScript">
+              <code>
+                function relojDigital() {
+                    let tiempoActual = new Date();
+                    let horas = tiempoActual.getHours().toString().length < 2 ? "0" + tiempoActual.getHours() : tiempoActual.getHours();
+                    let minutos = tiempoActual.getMinutes().toString().length < 2 ? "0" + tiempoActual.getMinutes() : tiempoActual.getMinutes();
+                    let segundos = tiempoActual.getSeconds().toString().length < 2 ? "0" + tiempoActual.getSeconds() : tiempoActual.getSeconds();
+                    let tiempo = `${horas}:${minutos}:${segundos}`;
+
+                    document.querySelector("#tiempo").innerHTML = tiempo;
+                  
+                }
+
+
+                setInterval(() => {
+                    relojDigital();
+                }, 1000);
+              </code>
+            </pre>
+  </div>
+  <style>
+    .contenedor {
+      margin: 0 auto;
+      width: fit-content;
+    }
+  </style>
+</body>
+
+</html>

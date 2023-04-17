@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JL Puente 😉</title>
+  <link rel="icon" href="img/icon.png" sizes="32x32" />
+  <link rel="stylesheet" href="assets/prism.css" media="screen" title="no title">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cabecera">
+      <h1>Funciones y Objetos</h1>
+      <h4>JLPuente · puenteformacio@gmail.com</h4>
+      <img src="img/logo.png">
+    </div>
+
+
+    <h2>1. TIPOS PRIMITIVOS DE DATOS</h2>
+
+    <p>Tipos de variables disponibles en JavaScript</p>
+    <pre class="language-JavaScript">
+              <code>
+                //---- String ----
+                let cadena = 'Tipos en JavaScript';
+                console.warn('-- String --');
+                console.log(cadena);
+                console.log(typeof cadena);
+
+                //---- Number ----
+                let numero = 20.5;
+                console.warn('-- Number --');
+                console.log(numero);
+                console.log(typeof numero);
+
+                //---- Boolean ----
+                let proposicion = true;
+                console.warn('-- Boolean --');
+                console.log(proposicion);
+                console.log(typeof proposicion);
+
+                //---- Undefined ----
+                let indefinido = undefined;
+                console.warn('-- Undefined --');
+                console.log(indefinido);
+                console.log(typeof indefinido);
+
+                //---- Null ----
+                let nulo = null;
+                console.warn('-- Null --');
+                console.log(nulo);
+                console.log(typeof nulo);
+
+                //---- Symbol ----
+                let simbolo = Symbol('id');
+                console.warn('-- Símbolo --');
+                console.log(simbolo);
+                console.log(typeof simbolo);
+                
+                //---- Object ----
+                let objeto = {
+                    nombre: 'juan gómez',
+                    edad: 20,
+                    empleado: true,
+                }
+
+                console.warn('-- Object --');
+                console.log(objeto);
+                console.log(typeof objeto);
+
+                //----- Function ----
+                function suma(Nro1,Nro2) {
+                    return Nro1 + Nro2;
+                }
+                let sumaTotal = suma(30,20);
+
+                console.warn('-- Function --');
+                console.log(sumaTotal);
+                console.log(typeof suma);
+              </code>
+            </pre>
+
+    <h2>2. STRINGS</h2>
+    <p>Creación de Cadenas</p>
+    <pre class="language-JavaScript">
+              <code>
+                //-- String Literals
+                let cadena1 = "Bienvenidos";
+                let cadena2 = 'Welcome';
+                let cadena3 = `Benvenuto`;
+                let cadena4 = new String("Benvinguts");
+                let cadena  = cadena1 + ' - ' + cadena2 + ' - ' + cadena3 + ' - ' + cadena4; // concatenar
+                console.warn('-- String Literals --');
+                console.log(cadena);
+              </code>
+            </pre>
+
+    <p>Secuencias de Escape</p>
+    <pre class="language-JavaScript">
+              <code>
+                //---- Secuencia de Escape ----
+                console.warn('-- Secuencia de Escape --');
+                let saludo = "Esto es genial";
+                console.log("\'Esto es genial\'");
+                console.log("\"Esto es genial\"");
+                console.log("Esto \tes \ngenial");
+              </code>
+            </pre>
+
+    <p>Longitud de una Cadena</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.warn('-- Longitud de una Cadena --');
+                let animal = 'dinosaurio';
+                console.log(`Longitud = ${animal.length}`); //--> Longitud de una cadena
+              </code>
+            </pre>
+
+    <p>Métodos de una Cadena</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.warn('-- charAt --');
+                console.log(`dinosaurio(0) : ${animal.charAt(0)}`); //--> Extraer caracter
+                console.log(`dinosaurio(3) : ${animal.charAt(3)}`);
+                console.log(`dinosaurio(5) : ${animal.charAt(5)}`);
+                console.log(`dinosaurio(7) : ${animal.charAt(7)}`);
+
+                console.warn('-- concat --');
+                console.log(`${animal.concat(" rosa")}`); //--> Otra forma de concatenar
+
+
+                console.warn('-- indexOf --');
+                console.log(`dinosaurio | dino : ${animal.indexOf("dino")}`); //--> Busqueda en la cadena, devuelve la posición
+                console.log(`dinosaurio | sa : ${animal.indexOf("sa")}`);
+                console.log(`dinosaurio | rio : ${animal.indexOf("rio")}`);
+
+
+                console.warn('-- repeat --');
+                console.log(`Repetir(x3) : ${animal.repeat(3)}`); //--> Repetición de la cadena
+                console.log(`Repetir(x5) : ${animal.repeat(5)}`);
+                console.log(`Repetir(x0) : ${animal.repeat(0)}`);
+                        
+
+                console.warn('-- replace --');
+                console.log(`dinosaurio : ${animal.replace("dino", "DINO")}`); //--> Reemplazar en la cadena
+                console.log(`dinosaurio : ${animal.replace("dino", "plateo")}`);
+
+
+                console.warn('-- slice + substring --');
+                console.log(`dinosaurio : ${animal.slice(3,7)}`); //--> Extraer parte de la cadena
+                console.log(`dinosaurio : ${animal.slice(3,-2)}`);
+                console.log(`dinosaurio : ${animal.substring(0,4)}`); //--> Extrae una subcadena
+                console.log(`dinosaurio : ${animal.substring(3)}`);
+
+
+                console.warn('-- split --');
+                let animales = "gato, perro, loro, gallo"; 
+                let arreglo = animales.split(', '); //--> Forma un arreglo a partir de una cadena
+                console.log(arreglo);
+                console.log(`[1] : ${arreglo[0]}`);
+                console.log(`[2] : ${arreglo[1]}`);
+                console.log(`[3] : ${arreglo[2]}`);
+                console.log(`[4] : ${arreglo[3]}`);
+
+
+                console.warn('-- startsWith --');
+                console.log(`dinosaurio | sa : ${animal.startsWith("sa")}`); //--> ¿Empieza en...?
+                console.log(`dinosaurio | di : ${animal.startsWith("di")}`);
+
+
+                console.warn('-- text-transform --');
+                console.log(`dinosaurio : ${animal.toUpperCase()}`); //--> convertir a mayúsculas / toLowerCase: a minúsculas
+
+
+                console.warn('-- toString --');
+                console.log(`${animal.toString()}`); //--> Escribir cadena
+
+
+                console.warn('-- trim --');   
+                let texto = 'Este           texto es       un poco       raro'; 
+                texto = texto.trim(); //--> Elimina los espacios, sólo funciona en el DOM
+                console.log(`${texto}`);
+                document.write(texto.trim() + "&#60;br&#62;");
+
+              </code>
+            </pre>
+
+    <h2>3. ARRAYS EN JAVASCRIPT</h2>
+    <p>Creación de un array</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.warn('--- Creación de arrays ---');
+                const vocales = ["a", "e", "i", "o", "u"]; //--> Array Literals (arreglo de solo cadenas)
+                console.log(vocales);
+
+                const meses = new Array("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "setiembre", "octubre", "noviembre", "diciemmbre"); //--> Array Constructor
+                console.log(meses);
+
+                let numeros = [10, 20, 30, 40, 50]; //--> arreglo numérico
+                console.log(numeros);
+
+                let varios = [null, 10, "hola", true, undefined]; //--> arreglo de varios tipos
+                console.log(varios);
+              </code>
+            </pre>
+
+    <p>Elementos de un array</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.warn('--- Elementos de un array ---');
+                console.log(`vocales = [a, e, i, o, u] : ${vocales[3]}`); //--> Acceder a los elementos del arreglo
+                console.log(`vocales = [a, e, i, o, u] : ${vocales[5]}`);
+                console.log(`meses | 05 : ${meses[4]}`);
+                console.log(`meses | 09 : ${meses[8]}`);
+                console.log(`numeros = [10, 20, 30, 40, 50] : ${numeros[0]}`);
+                console.log(`numeros = [10, 20, 30, 40, 50] : ${numeros[4]}`);
+                console.log(`varios = [null, 10, "hola", true, undefined] : ${varios[2]}`);
+              </code>
+            </pre>
+
+    <p>Recorrer elementos de un array</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.warn('--- Leer los elementos de un array ---');
+                meses.forEach(mes => {
+                    console.log(mes);
+                });
+              </code>
+            </pre>
+
+    <p>Propiedades de un array</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.warn('--- Añadir elementos al arreglo ---');
+                let frutas = new Array(); //--> Crear arreglo 
+                frutas[0] = "platano"; //--> Añadir elemento
+                frutas[1] = "manzana";
+                frutas[2] = "durazno";
+                frutas[3] = "fresa";
+                frutas[4] = "coco";
+                frutas[5] = "melon";
+
+                console.log(frutas);
+
+                frutas.forEach(fruta => {
+                    console.log(fruta);
+                });
+
+                console.warn('--- Longitud del arreglo ---');
+                console.log(`Longitud = ${frutas.length}`); //--> Longitud del arreglo
+              </code>
+            </pre>
+
+    <p>Métodos de un array</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.warn('--- Métodos del arreglo ---');
+
+                //---- Crear Array a partir de un objeto
+                console.log(`'BARCELONA' => ${Array.from('BARCELONA')}`);
+
+                //---- Comprobar si es Array
+                console.log(`¿Es array? : ${Array.isArray(frutas)}`);
+
+                //---- Crear una nueva instancia de Array con variables pasadas como elementos
+                console.log(`(1,2,3) => ${Array.of(1, 2, 3)}`);
+
+                //---- Añadir elemento al final de un Array
+                console.log(`numeros = [10, 20, 30, 40, 50]`);
+                numeros.push(60);
+                console.log(numeros);
+
+                //---- Eliminar elemento al final de un Array 
+                numeros.pop();
+                console.log(numeros);
+
+                //---- Añadir elemento del inicio de un Array 
+                numeros.unshift(0);
+                console.log(numeros);
+
+                //---- Eliminar elemento al inicio de un Array 
+                numeros.shift();
+                console.log(numeros);
+
+                //---- Inviertir el orden de los elementos 
+                console.log(numeros.reverse());
+
+                //---- Ordenar los elementos de un Array
+                console.log(frutas.sort());
+
+                //---- Encontrar el índice de un elemento en el Array 
+                console.log(vocales.indexOf("e"));
+                console.log(vocales.indexOf("u"));
+
+                //---- Eliminar un único elemento con el índice de posición 
+                console.log(frutas.splice(2,1));
+                console.log(frutas.splice(2,2));
+
+                //---- Concatenar Arrays 
+                console.log(vocales.concat(numeros));
+
+                //---- Unir los elementos en una cadena
+                console.log(numeros.join());
+
+                //---- ToString()
+                console.log(numeros.toString());
+                console.log(frutas.toString());
+
+                //---- Escribir uno a uno los elementos
+                numeros.forEach(elemento => console.log(elemento));
+
+                //---- Filtrar
+                console.log(frutas.filter(elemento => elemento.length > 5));
+              </code>
+            </pre>
+
+    <h2>4. DATE & TIME</h2>
+    <p>Trabajo con Fechas</p>
+    <pre class="language-JavaScript">
+              <code>
+                //---- Crear Date
+                var cumpleanos = new Date();
+
+                cumpleanos = new Date("mayo 10, 1990 11:19:29");
+                cumpleanos = new Date(1990,4,10);
+                cumpleanos = new Date(1990,4,10,11,19,29);
+
+                document.write(cumpleanos.toString() + "&#60;br&#62;"); //-- Nos permite escribir en el navegador
+
+                //---- Métodos
+                var fecha = new Date();
+
+                document.write("Hoy = " + fecha + "&#60;br&#62;");
+                document.write("Anio = " + fecha.getFullYear() + "&#60;br&#62;");
+                document.write("Mes = " + fecha.getMonth() + "&#60;br&#62;");
+                document.write("Día de la semana = " + fecha.getDay() + "&#60;br&#62;");
+                document.write("Día del mes = " + fecha.getDate() + "&#60;br&#62;");
+                document.write("Horas = " + fecha.getHours() + "&#60;br&#62;");
+                document.write("Minutos = " + fecha.getMinutes() + "&#60;br&#62;");
+                document.write("Anio = " + fecha.getUTCFullYear() + "&#60;br&#62;");
+              </code>
+            </pre>
+
+    <h2>5. OBJETOS</h2>
+    <p>Creando un objeto</p>
+    <pre class="language-JavaScript">
+              <code>
+                const Persona = {
+                    nombre: 'Marco',
+                    apellidos: 'Martinez Gómez',
+                    profesion: 'Diseñador Gráfico',
+                    email: 'marmaro@gmail.com',
+                    edad: 26,
+                    musica: ['rock','clásica','grunge', 'metal'],
+                    hogar: {
+                        ciudad: 'Valencia',
+                        pais: 'España'
+                    },
+                    born: function() {
+                        return new Date().getFullYear() - this.edad;
+                    }
+                }
+              </code>
+            </pre>
+
+    <p>Instanciando un objeto</p>
+    <pre class="language-JavaScript">
+              <code>
+                console.log(`Nombre : ${Persona.nombre} - Apellido : ${Persona.apellidos}`);
+                console.log(`Profesion : ${Persona.profesion}`);
+                console.log(`Email : ${Persona.email}`);
+                console.log(`Edad : ${Persona.edad}`);
+                console.log(`Música : ${Persona.musica}`);
+                console.log(`Ciudad : ${Persona.hogar.ciudad} - País: ${Persona.hogar.pais}`);
+                console.log(`Año de Nacimiento : ${Persona.born()}`);
+              </code>
+            </pre>
+
+    <h2>6. FUNCIONES</h2>
+    <p>Crear funciones</p>
+    <pre class="language-JavaScript">
+              <code>
+                //---- Crear Función
+                function potenciaCuadrada(num) {
+                    return num*num;
+                }
+
+                var nro1 = potenciaCuadrada(7);
+                var nro2 = potenciaCuadrada(5);
+                console.warn('--- Creación de Funciones ---');
+                console.log(nro1);
+                console.log(nro2);
+              </code>
+            </pre>
+
+    <p>Tipos de Funciones</p>
+    <pre class="language-JavaScript">
+              <code>
+                //---- Funciones sin parámetros
+
+                console.warn('--- Funciones sin parámetros ---');
+
+                function saludo() {
+                    console.log("Bienvenidos a JS =)");
+                }
+
+                saludo();
+
+                //---- Funciones con parámetros
+
+                console.warn('--- Funciones con parámetros ---');
+
+                function saludar(nombre = 'Visitante') {
+                    console.log(`Hola ${nombre}`);
+                }
+
+                saludar('Paola');
+                saludar('Milagros');
+                saludar('Carlos');
+                saludar();
+
+                //---- IIFE
+
+                console.warn('--- Funciones IIFE ---');
+
+                (function(){
+                    console.log("Creando un IIFE")
+                })(); 
+
+                (function(tecnologia){
+                    console.log(`Aprendiendo ${tecnologia}`)
+                })('JavaScript'); 
+
+                //---- Métodos de Propiedad
+
+                console.warn('--- Métodos de Propiedad ---');
+
+                const musica  = {
+                    play: function(id) {
+                        console.log(`Reproduciendo la canción id: ${id}`);
+                    },
+                    pause: function() {
+                        console.log(`Pausa a la música`);
+                    }
+                }
+
+                musica.borrar = function(id) {
+                    console.log(`Borrando la canción con el id: ${id}`);
+                }
+
+                musica.play(30);
+                musica.pause();
+                musica.borrar(2);
+
+                //---- Funciones anonimas
+
+                console.warn('--- Funciones anónimas ---');
+
+                var producto1 = function(a,b) { return a*b;};
+                console.log(producto1(2,3));
+
+                var producto2 = new Function("a", "b", "return a*b;");
+                console.log(producto2(5,6));
+
+                //---- Funciones IIFE Anónimas 
+
+                console.warn('--- Funciones IIFE anónima ---');
+
+                (function(){ console.log("Función Anónima IIFE") })();
+
+                //---- Funciones arrow
+
+                console.warn('--- Funciones Arrow ---');
+
+                const f = () => {
+                    console.log("Función Arrow");
+                }
+
+                f();
+              </code>
+            </pre>
+  </div>
+
+  <style>
+    .contenedor {
+      margin: 0 auto;
+      width: 800px;
+    }
+  </style>
+
+  <script src="assets/prism.js"></script>
+</body>
+
+</html>

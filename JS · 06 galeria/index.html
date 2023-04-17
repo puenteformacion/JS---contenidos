@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JL Puente 😉</title>
+  <link rel="icon" href="img/icon.png" sizes="32x32" />
+  <link rel="stylesheet" href="assets/prism.css" media="screen" title="no title">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cabecera">
+      <h1>GALERÍA JAVASCRIPT</h1>
+      <h4>JLPuente · puenteformacio@gmail.com</h4>
+      <img src="img/logo.png">
+    </div>
+
+    <h2>1. CREACIÓN DEL PROYECTO</h2>
+    <h3>📌 HTML</h3>
+    <pre class="language-HTML">
+              <code>
+                  &lt;div class="contenedor"&gt;  
+                    &lt;header&gt;  
+                      &lt;h1&gt;Galería de Barcelona&lt;/h1&gt;
+                    &lt;/header>
+
+                    &lt;ul class="galeria-imagenes"&gt;&lt;/ul&gt;
+                  &lt;/div&gt;
+
+                  &lt;footer&gt;
+                    &lt;p class="copy"&gt;&copy; by JL Puente ❤&lt;/p&gt;
+                  &lt;/footer&gt;
+              </code>
+            </pre>
+
+    <h3>📌 CSS</h3>
+    <p>▪️ Estilos Globales</p>
+    <pre class="language-CSS">
+              <code>
+                html {
+                  box-sizing: border-box;
+                }
+
+                *, *::before, *::after {
+                  box-sizing: inherit;
+                }
+
+                html {
+                  font-size: 62.5%;
+                }
+
+                body {
+                  font-weight: 300;
+                  font-size: 5vw;
+                  color: #666;  
+                  font-size: 1.6rem;
+                  line-height: 1.6;
+                  font-family: 'Roboto', sans-serif;
+                  background-color: #004c99;
+                }
+
+                img {
+                    max-width: 100%;
+                }
+
+                .contenedor {
+                    margin: 0 auto;
+                    width: min(90%, 120rem);
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Estilos Header y Footer</p>
+    <pre class="language-CSS">
+              <code>
+                /*--- Header ---*/
+
+                header {
+                    background-color: #a1214b;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                h1 {
+                    color: #fff;
+                }
+
+                /*--- Footer ---*/
+
+                footer {
+                    background-color: #dcb404;
+                    color: #004c99;
+                    padding: 1rem;
+                }
+
+                p.copy {
+                    text-align: center;
+                    font-weight: 500;
+                    margin: 0;
+                }
+              </code>
+            </pre>
+    <h3>📌 JAVASCRIPT</h3>
+    <pre class="language-JavaScript">
+              <code>
+                document.addEventListener('DOMContentLoaded', function() {
+                    crearGaleria();
+                });
+              </code>
+            </pre>
+
+    <h2>2. CREACIÓN DINÁMICA DE LA GALERÍA</h2>
+    <h3>📌 JAVASCRIPT</h3>
+    <p>▪️ Crear selectores y recuperar imágenes</p>
+    <pre class="language-JavaScript">
+              <code>
+                function crearGaleria() {
+                  //-- Seleccionar lista donde se insertará la galería 
+                  const galeria = document.querySelector('.galeria-imagenes');
+
+                  //-- Crear la etiqueta &lt;img&gt; y asignarle su respectivo src
+                  for( let i=1; i<=18; i++ ) {
+                      const imagen = document.createElement('IMG');
+                      imagen.src = `img/thumbnail/barcelona-thumb-${i}.jpg`;
+                      console.log(imagen);
+                  }
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Insertar imágenes en nuestro HTML</p>
+    <pre class="language-JavaScript">
+              <code>
+                function crearGaleria() {
+                    //-- Seleccionar lista donde se insertará la galería 
+                    const galeria = document.querySelector('.galeria-imagenes');
+
+                    
+                    for( let i=1; i<=18; i++ ) {
+                        //-- Crear la etiqueta &lt;img&gt; y asignarle su respectivo src
+                        const imagen = document.createElement('IMG');
+                        imagen.src = `img/thumbnail/barcelona-thumb-${i}.jpg`;
+                        //console.log(imagen);
+
+                        //-- Crear la etiqueta &lt;li&gt; y apilar dentro imagen
+                        const lista = document.createElement('LI');
+                        lista.appendChild(imagen);
+
+                        galeria.appendChild(lista);
+                    }
+                }
+              </code>
+            </pre>
+
+    <h3>📌 CSS</h3>
+    <p>▪️ Agregar estilos a la galería</p>
+    <pre class="language-CSS">
+              <code>
+                .galeria-imagenes {
+                    padding: 0;
+                    list-style: none;
+                    margin: 3rem 0;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2.5rem; 
+                }
+
+                @media (min-width: 480px) {
+                    .galeria-imagenes {
+                        grid-template-columns: repeat(3, 1fr);
+                    } 
+                }
+
+                @media (min-width: 768px) {
+                    .galeria-imagenes {
+                        grid-template-columns: repeat(4, 1fr);
+                    }
+                }
+
+                @media (min-width: 992px) {
+                    .galeria-imagenes {
+                        grid-template-columns: repeat(6, 1fr);
+                    }
+                }
+              </code>
+            </pre>
+
+    <h2>3. CREACIÓN DE FUNCIÓN MOSTRAR IMAGEN</h2>
+    <h3>📌 JAVASCRIPT</h3>
+    <p>▪️ Función Crear Galería</p>
+    <pre class="language-JavaScript">
+              <code>
+                function crearGaleria() {
+                    //-- Seleccionar lista donde se insertará la galería 
+                    const galeria = document.querySelector('.galeria-imagenes');
+
+                    
+                    for( let i=1; i<=18; i++ ) {
+                        //-- Crear la etiqueta &lt;img&gt; y asignarle su respectivo src: imagen thumbnail
+                        const imagen = document.createElement('IMG');
+                        imagen.src = `img/thumbnail/barcelona-thumb-${i}.jpg`;
+                        //console.log(imagen);
+
+                        //-- Crear la etiqueta &lt;li&gt; y apilar dentro imagen
+                        const lista = document.createElement('LI');
+                        lista.appendChild(imagen);
+
+                        galeria.appendChild(lista);
+
+                        //-- Añadir la función de mostrar imagen
+                        imagen.onclick = mostrarImagen;
+                        imagen.dataset.imagenId = i;
+                    }
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Función Mostrar Galería</p>
+    <pre class="language-JavaScript">
+              <code>
+                function mostrarImagen(e) {
+                    //console.log("Diste click en la imagen");
+                    //console.log(e.target.dataset.imagenId);
+                    
+                    //-- Recuperar el id de la imagen a la que se dió click
+                    const id = parseInt(e.target.dataset.imagenId);
+                    //console.log(id);
+
+                    //-- Crear la etiqueta &lt;img&gt; y asignarle su respectivo src: imagen grande
+                    const imagen = document.createElement('IMG');
+                    imagen.src = `img/complete/barcelona-${id}.jpg`;
+                    //console.log(imagen);
+
+                    //-- Crear el &lt;div&gt; Overlay
+                    const overlay = document.createElement('DIV');
+                    overlay.appendChild(imagen);
+                    overlay.classList.add("overlay");
+
+                    overlay.onclick = function() {
+                        overlay.remove();
+                    }
+
+                    //-- Mostrar galeria
+                    const body = document.querySelector('BODY');
+                    body.appendChild(overlay);
+
+                    //-- Botón cerrar
+                    const botonCerrar = document.createElement("P");
+                    botonCerrar.textContent = "✖";
+                    botonCerrar.classList.add("boton-cerrar");
+
+                    overlay.appendChild(botonCerrar);
+
+                    botonCerrar.onclick = cerrar;
+
+                    function cerrar() {
+                        overlay.remove();
+                    }
+                }
+              </code>
+            </pre>
+
+    <h3>📌 CSS</h3>
+    <p>▪️ Módulo Determinar Menor</p>
+    <pre class="language-CSS">
+              <code>
+                .overlay {
+                  position: fixed;
+                  background-color: rgba(0,0,0,.5);
+                  width: 100%;
+                  height: 100%;
+                  top: 0;
+                  display: grid;
+                  place-items: center;
+                  z-index: 1;
+                }
+              </code>
+            </pre>
+
+    <p>▪️ Botón cerrar</p>
+    <pre class="language-CSS">
+              <code>
+                .boton-cerrar {
+                  width: 5rem;
+                  height: 5rem;
+                  background-color: #fff;
+                  display: grid;
+                  place-items: center;
+                  font-weight: 900;
+                  font-size: 3rem;
+                  border-radius: 50%;
+                }
+
+                .boton-cerrar:hover {
+                    cursor: pointer;
+                }
+              </code>
+            </pre>
+    <style>
+      .contenedor {
+        margin: 0 auto;
+        width: 800px;
+      }
+    </style>
+
+    <script src="assets/prism.js"></script>
+</body>
+
+</html>

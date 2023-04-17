@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JL Puente 😉</title>
+  <link rel="icon" href="img/icon.png" sizes="32x32" />
+  <link rel="stylesheet" href="assets/prism.css" media="screen" title="no title">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cabecera">
+      <h1>Estructuras de Control I</h1>
+      <h4>JLPuente · puenteformacio@gmail.com</h4>
+      <img src="img/logo.png">
+    </div>
+
+
+    <h2>2. ESTRUCTURA SECUENCIAL</h2>
+    <h3>PROGRAMAS BASE</h3>
+
+    <p>Algoritmo que invierta el orden de los tres dígitos de un número</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer número de 3 dígitos
+                let numero = parseInt(prompt("Ingrese número de tres cifras: "));
+
+                //--Descomponer número de 3 dígitos
+                let unidades = numero % 10;
+                let decenas = (numero / 10 >>0) % 10;
+                let centenas = numero / 100 >>0;
+
+                //--Generar número invertido
+                let numeroInvertido = unidades*100 + decenas*10 + centenas;
+
+                //--Escribir número invertido
+                const html = `&#60;h1&#62;Resultados&#60;/h1&#62;
+                              &#60;table&#62;
+                                &#60;tr&#62;
+                                    &#60;td&#62;Número : ${numero}&#60;/td&#62;
+                                    &#60;td&#62;Número Invertido: ${numeroInvertido}&#60;/td&#62;
+                                &#60;/tr&#62;
+                              &#60;/table&#62;`;
+
+                document.write(html);
+              </code>
+            </pre>
+
+    <p>Algoritmo que determina cuántos apretones de mano hay en una reunión de “n” asistentes.</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer número de invitados
+                let numeroInvitados = parseInt(prompt("Ingrese número de invitados: "));
+
+                //--Total de apretones
+                let totalApretones = ((numeroInvitados-1)*numeroInvitados)/2
+
+                //Escribir número invertido
+                const html = `&#60;h1&#62;Resultados&#60;/h1&#62;
+                              &#60;table&#62;
+                                &#60;tr&#62;
+                                    &#60;td&#62;Número de Invitados fue 👥: ${numeroInvitados}&#60;/td&#62;
+                                    &#60;td&#62;Total de Apretones 🤝🏻: ${totalApretones}&#60;/td&#62;
+                                &#60;/tr&#62;
+                              &#60;/table&#62;`;
+
+                document.write(html);
+              </code>
+            </pre>
+
+    <p>Algoritmo que calcula el volumen de una esfera de radio “r” en metros.</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer el radio de la esfera
+                let radio = parseFloat(prompt("Ingrese el radio del círculo: "));
+
+                //--Calcular el volumen de la esfera
+                let volumen = (4*Math.PI*Math.pow(radio,3))/3
+
+                //Escribir número invertido
+                const html = `&#60;h1&#62;Resultados&#60;/h1&#62;
+                              &#60;table&#62;
+                                &#60;tr&#62;
+                                    &#60;td&#62;Radio : ${radio}&#60;/td&#62;
+                                    &#60;td&#62;Volumen ⚽: ${volumen}&#60;/td&#62;
+                                &#60;/tr&#62;
+                              &#60;/table&#62;`;
+
+                document.write(html);
+              </code>
+            </pre>
+
+
+    <h2>3. ESTRUCTURA SELECTIVA</h2>
+    <h3>3.1 SELECCIONES SIMPLES</h3>
+    <p>Algoritmo que determina si un número positivo es impar.</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer número
+                let numero = parseInt(prompt("Ingrese un número positivo: "));
+
+                //--Determinar si el número es impar y positivo
+                if ((numero % 2 != 0) && numero >0) {
+                  document.write("Es impar");
+                }
+              </code>
+            </pre>
+
+    <h3>3.2 SELECCIONES DOBLES</h3>
+    <p>Algoritmo que determina el costo de una llamada telefónica. Una llamada telefónica cuesta 0.5 euros por los
+      primeros tres minutos o menos. Cada minuto adicional es un paso de contador y cuesta 0.1 euros. Calcule el monto
+      de una llamada cualquiera.</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer tiempo o duración de la llamada
+                let tiempo = parseInt(prompt("Ingrese la duración de la llamada: "));
+
+                //--Determinar el costo de la llamada
+                let costo = 0;
+
+                if ((tiempo <= 3) && (tiempo > 0)) {
+                  costo = 0.5;
+                } else {
+                  costo = 0.5 + (tiempo-3)*0.1;
+                }
+
+                //--Escribir costo
+                document.write(`El costo de la llamada fue ${costo} euros`);
+              </code>
+            </pre>
+
+    <h3>3.3 SELECCIONES DOBLES EXTENDIDAS</h3>
+    <p>Algoritmo que ordena de mayor a menor 3 números enteros y positivos.</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer números
+                let numero1 = parseInt(prompt("Ingrese número 1: "));
+                let numero2 = parseInt(prompt("Ingrese número 2: "));
+                let numero3 = parseInt(prompt("Ingrese número 3: "));
+
+                //Ordenar de mayor a menor los tres números
+                if ((numero1 >= numero2) && (numero2 >= numero3)) {
+                  document.write(`${numero1} - ${numero2} - ${numero3}`);
+                } else if ((numero1 >= numero3) && (numero3 >= numero2)) {
+                  document.write(`${numero1} - ${numero3} - ${numero2}`);
+                } else if ((numero2 >= numero1) && (numero1 >= numero3)) {
+                  document.write(`${numero2} - ${numero1} - ${numero3}`);
+                } else if ((numero2 >= numero3) && (numero3 >= numero1)) {
+                  document.write(`${numero2} - ${numero3} - ${numero1}`);
+                } else if ((numero3 >= numero1) && (numero1 >= numero2)) {
+                  document.write(`${numero3} - ${numero1} - ${numero2}`);
+                } else {
+                  document.write(`${numero3} - ${numero2} - ${numero1}`);
+                }
+              </code>
+            </pre>
+
+    <h3>3.4 SELECCIONES ANIDADAS</h3>
+    <p>Algoritmo que determina el rendimiento de un alumno. Se califica según lo siguiente:
+    <ul>
+      <li>Muy Bueno (19 - 20)</li>
+      <li>Bueno (16 - 17 - 18)</li>
+      <li>Regular (14 - 15)</li>
+      <li>Suficiente (11 - 12 - 13)</li>
+      <li>Insuficiente (08 - 09 - 10)</li>
+      <li>Deficiente (05 - 06 - 07)</li>
+      <li>Pésimo (00 - 01 - 02 - 03 - 04)</li>
+    </ul>
+    </p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer nota
+                let nota = parseInt(prompt("Ingrese la nota: "));
+
+                //--Determinar rendimiento del alumno según la nota
+                if ((nota >= 0) && (nota <= 20)) {
+                  if ((nota == 20) || (nota == 19)) {
+                    document.write("Muy Bueno");
+                  } else if ((nota == 16) || (nota == 17) || (nota == 18)) {
+                    document.write("Bueno");
+                  } else if ((nota == 14) || (nota == 15)) {
+                    document.write("Regular");
+                  } else if ((nota == 11) || (nota == 12) || (nota == 13)) {
+                    document.write("Suficiente");
+                  } else if ((nota == 8) || (nota == 9) || (nota == 10)) {
+                    document.write("Insuficiente");
+                  } else if ((nota == 5) || (nota == 6) || (nota == 7)) {
+                    document.write("Deficiente");
+                  } else {
+                    document.write("Pésimo");
+                  }
+                }
+              </code>
+            </pre>
+
+    <h3>3.4 SELECCIONES ANIDADAS</h3>
+    <p>Algoritmo que lea un número que represente el mes y diga qué mes es:</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer número
+                let numero = parseInt(prompt("Ingrese el número correspondiente a un mes: "));
+
+                //--Determinar el mes según el número ingresado
+                switch (numero) {
+                  case 1:
+                    document.write("Enero");
+                    break;
+                  case 2:
+                    document.write("Febrero");
+                    break;
+                  case 3:
+                    document.write("Marzo");
+                    break;
+                  case 4:
+                    document.write("Abril");
+                    break;
+                  case 5:
+                    document.write("Mayo");
+                  break;
+                  case 6:
+                    document.write("Junio");
+                    break;
+                  case 7:
+                    document.write("Julio");
+                    break;
+                  case 8:
+                    document.write("Agosto");
+                    break;
+                  case 9:
+                    document.write("Setiembre");
+                  break;
+                  case 10:
+                    document.write("Octubre");
+                    break;
+                  case 11:
+                    document.write("Noviembre");
+                    break;
+                  case 12:
+                    document.write("Diciembre");
+                    break;
+                  default:
+                    document.write("Es una opción inválida");
+                    break;
+                  }
+              </code>
+            </pre>
+
+
+    <h2>4. ESTRUCTURAS REPETITIVAS</h2>
+    <h3>4.2. REPETITIVAS: REPETIR HASTA QUE</h3>
+    <p>Algoritmo que escriba los “n” primeros números positivos:</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer número de enteros
+                let n = parseInt(prompt("Ingrese el valor de n: "));
+
+                //--Escribir los “n” primeros números enteros
+                let numero = 0;
+                
+                do {
+                  numero++; //actulización
+                  document.write(`${numero} &#60;br&#62;`); //proceso
+                } while (numero < n);
+              </code>
+            </pre>
+
+    <h3>4.3. REPETITIVAS: MIENTRAS</h3>
+    <p>Algoritmo que escriba los “n” primeros números positivos:</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer número de enteros
+                let n = parseInt(prompt("Ingrese el valor de n: "));
+
+                //--Escribir los “n” primeros números enteros
+                let numero = 0
+                  
+                while (numero < n) {
+                  numero++; //actualización
+                  document.write(`${numero} &#60;br&#62;`); //proceso
+                }
+
+              </code>
+            </pre>
+
+    <h3>4.4. REPETITIVAS: PARA</h3>
+    <p>Algoritmo que escriba los “n” primeros números positivos:</p>
+    <pre class="language-JavaScript">
+              <code>
+                //--Leer número de enteros
+                let n = parseInt(prompt("Ingrese el valor de n: "));
+
+                //--Escribir los “n” primeros números enteros
+                for (let i = 1; i <= n; i++) { //numero es i
+                  document.write(`${i} &#60;br&#62;`);
+                }
+              </code>
+            </pre>
+  </div>
+
+  <style>
+    .contenedor {
+      margin: 0 auto;
+      width: 800px;
+    }
+  </style>
+
+  <script src="assets/prism.js"></script>
+</body>
+
+</html>

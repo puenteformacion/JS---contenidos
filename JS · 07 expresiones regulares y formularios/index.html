@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JL Puente 😉</title>
+  <link rel="icon" href="img/icon.png" sizes="32x32" />
+  <link rel="stylesheet" href="assets/prism.css" media="screen" title="no title">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="cabecera">
+      <h1>Validar Formularios</h1>
+      <h4>JLPuente · puenteformacio@gmail.com</h4>
+      <img src="img/logo.png">
+    </div>
+
+
+    <h2>1. JAVASCRIPT</h2>
+    <h3>📌 EXPRESIONES REGULARES Y CAMPOS</h3>
+
+    <pre class="language-JavaScript">
+              <code>
+                const expresiones = {
+                  usuario: /^[a-zA-Z0-9\_\-]{6,16}$/, // Letras, números, guión y guión bajo
+                  nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos
+                  password: /^.{6,12}$/, // 8 a 12 caracteres (cualquier)
+                  correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                  telefono: /^\d{8,14}$/ // 8 a 14 dígitos 
+                }
+
+                const campos = {
+                  usuario: false,
+                  nombre: false,
+                  password: false,
+                  correo: false,
+                  telefono: false
+                }
+              </code>
+            </pre>
+
+    <h3>📌 SELECTORES</h3>
+    <pre class="language-JavaScript">
+              <code>
+                const formulario = document.querySelector('#formulario');
+                const inputs = document.querySelectorAll('#formulario .campo-input');
+              </code>
+            </pre>
+
+    <h3>📌 VALIDAR FORMULARIO</h3>
+    <pre class="language-JavaScript">
+              <code>
+                const validarFormulario = (e) => {
+                  switch (e.target.name) {
+                    case "usuario":
+                      validarCampo(expresiones.usuario, e.target, 'usuario');
+                    
+                    case "nombre":
+                      validarCampo(expresiones.nombre, e.target, 'nombre');
+                      break;
+                    
+                    case "password":
+                      validarCampo(expresiones.password, e.target, 'password');
+                      validarPassword();
+                      break;
+                    
+                    case "password-repetir":
+                      validarPassword();
+                    break;
+                    
+                    case "email":
+                      validarCampo(expresiones.correo, e.target, 'email');
+                    break;
+
+                    case "telefono":
+                      validarCampo(expresiones.telefono, e.target, 'telefono');
+                    break;
+                  }
+                }
+              </code>
+            </pre>
+
+    <h3>📌 VALIDAR PASSWORD</h3>
+    <pre class="language-JavaScript">
+              <code>
+                const validarPassword = () => {
+                  const pass1 = document.querySelector("#password");
+                  const pass2 = document.querySelector("#password-repetir");
+
+                  if(pass1.value !== pass2.value){
+                    document.querySelector(`#campo-password-repetir`).classList.add("campo-incorrecto");
+                    document.querySelector(`#campo-password-repetir`).classList.remove("campo-correcto");
+                    document.querySelector(`#campo-password-repetir i`).classList.add("fa-times-circle");
+                    document.querySelector(`#campo-password-repetir i`).classList.remove("fa-check-circle");
+                    document.querySelector(`#campo-password-repetir .campo-error`).classList.add("mensaje-exito-activo");
+                    campos['password'] = false;
+                  }else {
+                    document.querySelector(`#campo-password-repetir`).classList.remove("campo-incorrecto");
+                    document.querySelector(`#campo-password-repetir`).classList.add("campo-correcto");
+                    document.querySelector(`#campo-password-repetir i`).classList.remove("fa-times-circle");
+                    document.querySelector(`#campo-password-repetir i`).classList.add("fa-check-circle");
+                    document.querySelector(`#campo-password-repetir .campo-error`).classList.remove("mensaje-exito-activo");
+                    campos['password'] = true;
+                  }
+                }
+              </code>
+            </pre>
+
+    <h3>📌 VALIDAR CAMPO</h3>
+    <pre class="language-JavaScript">
+              <code>
+                const validarCampo = (expresion, input, campo) => {
+                  if(expresion.test(input.value)) {
+                    document.querySelector(`#campo-${campo}`).classList.remove("campo-incorrecto");
+                    document.querySelector(`#campo-${campo}`).classList.add("campo-correcto");
+                    document.querySelector(`#campo-${campo} i`).classList.remove("fa-times-circle");
+                    document.querySelector(`#campo-${campo} i`).classList.add("fa-check-circle");
+                    document.querySelector(`#campo-${campo} .campo-error`).classList.remove("mensaje-exito-activo");
+                    campos[campo] = true;
+                  } else {
+                    document.querySelector(`#campo-${campo}`).classList.add("campo-incorrecto");
+                    document.querySelector(`#campo-${campo}`).classList.remove("campo-correcto");
+                    document.querySelector(`#campo-${campo} i`).classList.add("fa-times-circle");
+                    document.querySelector(`#campo-${campo} i`).classList.remove("fa-check-circle");
+                    document.querySelector(`#campo-${campo} .campo-error`).classList.add("mensaje-exito-activo");
+                    campos[campo] = false;
+                  }
+                }
+              </code>
+            </pre>
+
+    <h3>📌 INPUTS</h3>
+    <pre class="language-JavaScript">
+              <code>
+                inputs.forEach(input => {
+                  input.addEventListener('keyup', validarFormulario);
+                  input.addEventListener('blur', validarFormulario);
+                });
+              </code>
+            </pre>
+
+    <h3>📌 FORMULARIO</h3>
+    <pre class="language-JavaScript">
+              <code>
+                formulario.addEventListener('submit', (e) => {
+                  e.preventDefault();
+                  
+                  const checkbox = document.querySelector("#checkbox");
+
+                  if(campos.usuario && campos.password && campos.nombre && campos.telefono && checkbox.checked) {
+                    formulario.reset();
+
+                    document.querySelector('#mensaje-exito').classList.add('mensaje-exito-activo');
+                    setTimeout(() => {
+                      document.querySelector('#mensaje-exito').classList.remove('mensaje-exito-activo');
+                    }, 5000);
+                    
+                    document.querySelectorAll('.campo-correcto').forEach(icono => {
+                      icono.classList.remove('campo-correcto');
+                    });
+                  } else {
+                    document.querySelector('#campo-mensaje').classList.add('campo-mensaje-activo');
+                    setTimeout(() => {
+                      document.querySelector('#campo-mensaje').classList.remove('campo-mensaje-activo');
+                    }, 5000);
+                  }
+                 });
+              </code>
+            </pre>
+  </div>
+
+  <style>
+    .contenedor {
+      margin: 0 auto;
+      width: 800px;
+    }
+  </style>
+
+  <script src="assets/prism.js"></script>
+</body>
+
+</html>
